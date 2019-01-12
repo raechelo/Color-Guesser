@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: #232323;
+}
+
+
+
+nav {
+    background-color: #fff;
+    height: 50px;
+    position: relative;
+}
+
+nav h2 {
+    display: inline;
+}
+
+.new-game {
+    position: absolute;
+    left: 80px;
+}
+
+.game-mode {
+    position: absolute;
+    right: 80px;
+}
+
+.hard-mode {
+    padding: 0 10px;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.square {
+    background-color: #33eeff;
+    border-radius: 25px;
+    float: left;
+    padding-bottom: 30%;
+    margin: 10px;
+    width: 30%;
+}
