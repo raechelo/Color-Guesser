@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background-color: blanchedalmond;
+    background-color:slategray;
     height: 200px;
     letter-spacing: 2px;
     padding: 20px;
@@ -26,17 +26,21 @@ nav {
     background-color: #fff;
     display: flex;
     justify-content: space-between;
-    height: 50px;
-    padding: 15px 50px;
+    padding: 0 50px;
     position: relative;
+}
+
+nav h2 {
+    border-bottom: 2px solid transparent;
+    padding: 15px 10px;
+}
+
+.game-mode {
+    display: inline-flex;
 }
 
 .error-msg {
     visibility: hidden;
-}
-
-.hard-mode {
-    padding: 0 10px;
 }
 
 .container {
@@ -51,4 +55,19 @@ nav {
     padding-bottom: 30%;
     margin: 10px;
     width: 30%;
+}
+
+.hard-mode:hover,
+.easy-mode:hover,
+.new-game:hover {
+    background-color: slategray;
+    border-bottom: 2px solid #33eeff;
+    color: #33eeff;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: slategray;
+    border-bottom: 2px solid #33eeff;
+    color: #33eeff;
 }
