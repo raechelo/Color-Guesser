@@ -72,22 +72,20 @@ function randomColor() {
 }
 
 function changeEasyMode() {
-  let btmRow = document.querySelectorAll('.bottom-row');
   easyMode.classList.add('selected');
   hardMode.classList.remove('selected');
-  btmRow.forEach(btmRow => btmRow.style.visibility = 'hidden');
   colors = generateRandomColors(3);
   winningColor = chooseColor();
+  removeRow();
   colorToggle.textContent = winningColor;
   toggleColors();
 }
 
 function changeHardMode() {
-  let btmRow = document.querySelectorAll('.bottom-row');
   hardMode.classList.add('selected');
   easyMode.classList.remove('selected');
-  btmRow.forEach(btmRow => btmRow.style.visibility = 'visible');
   colors = generateRandomColors(6);
+  replaceRow();
   winningColor = chooseColor();
   colorToggle.textContent = winningColor;
   toggleColors();
@@ -99,4 +97,15 @@ function newGameBtn() {
   } else if (colors.length === 3) {
     changeEasyMode();
   }
+}
+
+function removeRow() {
+  let btmRow = document.querySelectorAll('.bottom-row');
+  btmRow.forEach(btmRow => btmRow.style.visibility = 'hidden');
+}
+
+function replaceRow() {
+  let btmRow = document.querySelectorAll('.bottom-row');
+  btmRow.forEach(btmRow => btmRow.style.visibility = 'visible');
+
 }
