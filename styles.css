@@ -5,28 +5,34 @@
 
 body {
     background-color: #232323;
+    font-family: 'Rancho', cursive;
+    text-transform: uppercase;
 }
 
+header {
+    background-color: blanchedalmond;
+    height: 200px;
+    letter-spacing: 2px;
+    padding: 20px;
+    text-align: center;
+}
 
+.heading-color {
+    display: block;
+    font-size: 50px;
+}
 
 nav {
     background-color: #fff;
+    display: flex;
+    justify-content: space-between;
     height: 50px;
+    padding: 15px 50px;
     position: relative;
 }
 
-nav h2 {
-    display: inline;
-}
-
-.new-game {
-    position: absolute;
-    left: 80px;
-}
-
-.game-mode {
-    position: absolute;
-    right: 80px;
+.error-msg {
+    display: none;
 }
 
 .hard-mode {
