@@ -1,26 +1,20 @@
 // VARIABLES
-
-var colors = [
-  "rgb(255, 0, 0)",
-  "rgb(255, 255, 0)",
-  "rgb(0, 255, 0)",
-  "rgb(0, 255, 255)",
-  "rgb(0, 0, 255)",
-  "rgb(255, 0, 255)"
-]
+var colors = generateRandomColors(6)
 
 var squares = document.querySelectorAll('.square');
-var winningColor = colors[3];
+var winningColor = chooseColor();
 var colorToggle = document.getElementById('heading-color-js');
 var colorContainer = document.getElementById('container-js');
-var errorMsg = document.getElementById('error-msg-js')
+var errorMsg = document.getElementById('error-msg-js');
+var headerBg = document.querySelector('.header-js');
+var newGame = document.querySelector('.new-game');
+var easyMode = document.querySelector('easy-mode')
 
 
 // EVENT LISTENERS
-// colorContainer.addEventListener('click', deleteColor)
+newGame.addEventListener('click', startNewGame);
 
 colorToggle.textContent = winningColor;
-
 
 for(var i = 0; i < squares.length; i++) {
   squares[i].style.backgroundColor = colors[i];
@@ -28,26 +22,51 @@ for(var i = 0; i < squares.length; i++) {
     var clickedColor = this.style.backgroundColor;
     if (clickedColor === winningColor) {
       alert('correct')
-      squares.style.backgroundColor = clickedColor;
+      colorChange();
+      winningMsg();
     } else {
       alert('nope');
+      losingMsg();
       this.style.backgroundColor = "#232323";
-
     }
   })
 }
 
-// function deleteColor() {
-//   if (clickedColor !== winningColor) {
-//     this.remove()
-//   }
-// }
+function colorChange() {
+ squares.forEach(square => square.style.backgroundColor = winningColor)
+}
 
-// squares.forEach(squares => squares.style.backgroundColor = colors)
+function winningMsg() {
+  errorMsg.style.visibility = 'visible';
+  errorMsg.innerText = 'YOU GOT IT!';
+  headerBg.style.background = winningColor;
+}
 
-// function colorCompare(e) {
-//   if (e.target.className === 'square') {
-//     var clickedColor = this.style.backgroundColor;
-//     console.log(clickedColor)
-//     }
-// }
+function losingMsg() {
+  errorMsg.style.visibility = 'visible';
+  errorMsg.innerText = 'TRY AGAIN!'
+}
+
+function chooseColor() {
+  var random = Math.floor(Math.random() * colors.length)
+  return colors[random];
+}
+
+function startNewGame() {
+  location.reload();
+}
+
+function generateRandomColors(number) {
+  var randomColorArr = [];
+  for(var i = 0; i < number; i++) {
+    randomColorArr.push(randomColor())
+  }
+  return randomColorArr;
+}
+
+function randomColor() {
+  var redHue = Math.floor(Math.random() * 256);
+  var greenHue = Math.floor(Math.random() * 256);
+  var blueHue = Math.floor(Math.random() * 256);
+  return `rgb(${redHue}, ${greenHue}, ${blueHue})`
+}
