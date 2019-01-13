@@ -43,6 +43,7 @@ function colorChange() {
 function winningMsg() {
   errorMsg.style.visibility = 'visible';
   errorMsg.innerText = 'YOU GOT IT!';
+  newGame.innerText = 'PLAY AGAIN?'
   headerBg.style.background = winningColor;
 }
 
@@ -97,6 +98,8 @@ function newGameBtn() {
   } else if (colors.length === 3) {
     changeEasyMode();
   }
+  errorMsg.style.visibility = 'hidden';
+  newGame.innerText = 'NEW COLORS';
 }
 
 function removeRow() {
