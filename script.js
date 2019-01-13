@@ -13,8 +13,10 @@ var hardMode = document.getElementById('hard-mode-js');
 
 // EVENT LISTENERS
 newGame.addEventListener('click', startNewGame);
-easyMode.addEventListener('click', changeMode)
-hardMode.addEventListener('click', changeMode)
+easyMode.addEventListener('click', changeEasyMode)
+hardMode.addEventListener('click', changeHardMode)
+window.addEventListener('load', changeHardMode)
+
 colorToggle.textContent = winningColor;
 
 
@@ -73,24 +75,22 @@ function randomColor() {
   return `rgb(${redHue}, ${greenHue}, ${blueHue})`
 }
 
-function changeMode(event) {
-  event.target.classList.add('selected');
-  if (event.target.nextElementSibling.classList.contains('selected')) {
-    event.target.classList.remove('selected');
-    console.log('whoaaa');
-  }
+function changeEasyMode(event) {
+  let btmRow = document.querySelectorAll('.bottom-row');
+  easyMode.classList.add('selected');
+  hardMode.classList.remove('selected');
+  btmRow.forEach(btmRow => btmRow.style.visibility = 'hidden')
 }
 
-
+function changeHardMode(event) {
+  let btmRow = document.querySelectorAll('.bottom-row');
+  hardMode.classList.add('selected');
+  easyMode.classList.remove('selected');
+  btmRow.forEach(btmRow => btmRow.style.visibility = 'visible');
+  
+}
   
   //generate 3 new colors
   //pick one color from three
   //update pickedColor & three squares
   //hide 3 other squares
-  
-  // if (event.target.classList == 'no-select') {
-  //   console.log('change1')
-  //   event.target.classList.add('easy-select');
-  // } else if (event.target.classList.includes('easy-select')) {
-  //   console.log('change2')
-  //   event.target.classList.add('no-select')
