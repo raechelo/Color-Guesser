@@ -32,7 +32,7 @@ nav {
 }
 
 .error-msg {
-    display: none;
+    visibility: hidden;
 }
 
 .hard-mode {
