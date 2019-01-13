@@ -12,29 +12,29 @@ var hardMode = document.getElementById('hard-mode-js');
 
 
 // EVENT LISTENERS
-newGame.addEventListener('click', startNewGame);
+window.addEventListener('load', toggleColors);
 easyMode.addEventListener('click', changeEasyMode)
 hardMode.addEventListener('click', changeHardMode)
 window.addEventListener('load', changeHardMode)
+newGame.addEventListener('click', newGameBtn)
 
-colorToggle.textContent = winningColor;
-
-
-for(var i = 0; i < squares.length; i++) {
-  squares[i].style.backgroundColor = colors[i];
-  squares[i].addEventListener('click', function() {
-    var clickedColor = this.style.backgroundColor;
-    if (clickedColor === winningColor) {
-      alert('correct')
-      colorChange();
-      winningMsg();
-    } else {
-      alert('nope');
-      losingMsg();
-      this.style.backgroundColor = "#232323";
-    }
-  })
+function toggleColors() {
+  colorToggle.textContent = winningColor;
+  for(var i = 0; i < squares.length; i++) {
+    squares[i].style.backgroundColor = colors[i];
+    squares[i].addEventListener('click', function() {
+      var clickedColor = this.style.backgroundColor;
+      if (clickedColor === winningColor) {
+        colorChange();
+        winningMsg();
+      } else {
+        losingMsg();
+        this.style.backgroundColor = "#232323";
+      }
+    })
+  }
 }
+
 
 function colorChange() {
  squares.forEach(square => square.style.backgroundColor = winningColor)
@@ -56,10 +56,6 @@ function chooseColor() {
   return colors[random];
 }
 
-function startNewGame() {
-  location.reload();
-}
-
 function generateRandomColors(number) {
   var randomColorArr = [];
   for(var i = 0; i < number; i++) {
@@ -75,22 +71,32 @@ function randomColor() {
   return `rgb(${redHue}, ${greenHue}, ${blueHue})`
 }
 
-function changeEasyMode(event) {
+function changeEasyMode() {
   let btmRow = document.querySelectorAll('.bottom-row');
   easyMode.classList.add('selected');
   hardMode.classList.remove('selected');
-  btmRow.forEach(btmRow => btmRow.style.visibility = 'hidden')
+  btmRow.forEach(btmRow => btmRow.style.visibility = 'hidden');
+  colors = generateRandomColors(3);
+  winningColor = chooseColor();
+  colorToggle.textContent = winningColor;
+  toggleColors();
 }
 
-function changeHardMode(event) {
+function changeHardMode() {
   let btmRow = document.querySelectorAll('.bottom-row');
   hardMode.classList.add('selected');
   easyMode.classList.remove('selected');
   btmRow.forEach(btmRow => btmRow.style.visibility = 'visible');
-  
+  colors = generateRandomColors(6);
+  winningColor = chooseColor();
+  colorToggle.textContent = winningColor;
+  toggleColors();
 }
-  
-  //generate 3 new colors
-  //pick one color from three
-  //update pickedColor & three squares
-  //hide 3 other squares
+
+function newGameBtn() {
+  if (colors.length === 6) {
+    changeHardMode()
+  } else if (colors.length === 3) {
+    changeEasyMode();
+  }
+}

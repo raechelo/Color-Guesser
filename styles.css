@@ -5,12 +5,12 @@
 
 body {
     background-color: #232323;
-    font-family: 'Rancho', cursive;
+    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
 }
 
 header {
-    background-color:slategray;
+    background-color:dodgerblue;
     height: 200px;
     letter-spacing: 2px;
     padding: 20px;
@@ -49,7 +49,6 @@ nav h2 {
 }
 
 .square {
-    background-color: #33eeff;
     border-radius: 25px;
     float: left;
     padding-bottom: 30%;
@@ -60,14 +59,14 @@ nav h2 {
 .hard-mode:hover,
 .easy-mode:hover,
 .new-game:hover {
-    background-color: slategray;
-    border-bottom: 2px solid #33eeff;
-    color: #33eeff;
+    background-color: dodgerblue;
+    border-bottom: 2px solid deeppink;
+    color: #ffffff;
     cursor: pointer;
 }
 
 .selected {
-    background-color: slategray;
-    border-bottom: 2px solid #33eeff;
-    color: #33eeff;
+    background-color: dodgerblue;
+    border-bottom: 2px solid deeppink;
+    color: #ffffff;
 }
